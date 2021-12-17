@@ -1,0 +1,30 @@
+<odoo>
+    <record id="odoo168.manga_report" model="ir.actions.report">
+        <field name="name"> Informe de mangas</field>
+        <field name="model">odoo168.manga</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">odoo168.manga_report_view</field>
+        <field name="report_file">odoo168.manga_report</field>
+        <field name="binding_model_id" ref="model_odoo168_manga"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="manga_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Mangas </h1><br />
+                <t t-foreach="docs" t-as="manga">
+                    <ul>
+                        <li>    id <span t-field="manga.name" /></li>
+                        <li>    nombre <span t-field="manga.nombre" /></li>
+                        <li>    autor <span t-field="manga.autor" /></li>
+
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

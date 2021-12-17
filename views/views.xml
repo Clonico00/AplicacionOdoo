@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+ <!-- Vistas de persona-->
+
+    <record model="ir.ui.view" id="odoo168.manga_list_view">
+      <field name="name">odoo168.manga.view.tree</field>
+      <field name="model">odoo168.manga</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="autor"/>
+
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="odoo168.manga_search_view">
+      <field name="name">odoo168.manga.view.search</field>
+      <field name="model">odoo168.manga</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="autor"/>
+
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="odoo168.manga_form_view">
+      <field name="name">odoo168.manga.view.form</field>
+      <field name="model">odoo168.manga</field>
+      <field name="arch" type="xml">
+        <form string="Información manga">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="id"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="autor"/>
+
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+
+    </record>
+
+
+    <!-- Definición de menús-->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="odoo168.manga_action_window">
+      <field name="name">Mangas</field>
+      <field name="res_model">odoo168.manga</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="odoo168" id="odoo168.menu_root"/>
+    <menuitem name="Mangas" id="odoo168.menu_manga" parent="odoo168.menu_root"/>
+    <menuitem name="List" id="odoo168.menu_manga_list" parent="odoo168.menu_manga"
+              action="odoo168.manga_action_window"/>
+  </data>
+</odoo>
